@@ -3,7 +3,6 @@ import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
-import { EasterEgg } from "@/components/EasterEgg";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -11,9 +10,9 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Om Shegokar — AI/ML Engineer",
+  title: "Om Shegokar — Machine Learning Engineer",
   description:
-    "Om Shegokar — AI/ML engineer at Juspay (Xyne team). LLM evaluation platforms, inference optimization, and agentic developer tooling. Bengaluru, India.",
+    "Om Shegokar — machine learning engineer based in Pune. Generative AI, distributed LLM evaluation, inference optimization, and persistent-memory coding agents.",
   metadataBase: new URL("http://localhost:3000"), // TODO: set to production URL after first deploy
 };
 
@@ -24,7 +23,6 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />
-        <EasterEgg />
         <div aria-hidden="true" className="crt-overlay" />
       </body>
     </html>

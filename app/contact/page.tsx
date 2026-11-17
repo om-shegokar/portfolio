@@ -10,6 +10,7 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const socials = [
+    { label: "engram-node", detail: "github.com/engram-node", href: profile.githubOrg, external: true },
     {
       label: "github",
       detail: profile.github.replace("https://", ""),
@@ -34,7 +35,7 @@ export default function ContactPage() {
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
       <div className="mb-10">
         <h1 className="text-2xl font-semibold text-term-fg sm:text-3xl">
-          ~/contact<span className="cursor-blink text-term-green">_</span>
+          ~/contact
         </h1>
         <p className="mt-2 text-sm sm:text-base">
           <Prompt>ls -la ~/profiles</Prompt>

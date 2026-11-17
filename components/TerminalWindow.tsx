@@ -12,7 +12,7 @@ export function TerminalWindow({
 }) {
   return (
     <div
-      className={`overflow-hidden rounded-xl border border-term-border bg-term-surface shadow-[0_24px_70px_-20px_rgba(0,0,0,0.75)] ${className}`}
+      className={`overflow-hidden rounded-xl border border-term-border bg-term-surface ${className}`}
     >
       <div className="flex items-center gap-2 border-b border-term-border bg-term-raised px-4 py-3">
         <span aria-hidden="true" className="h-3 w-3 rounded-full bg-term-red/90" />
