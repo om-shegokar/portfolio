@@ -12,12 +12,12 @@
    ```bash
    git clone portfolio.bundle portfolio
    cd portfolio
-   git remote set-url origin https://github.com/DarkRedOS/portfolio.git
-   git push -u origin main        # needs gh auth login / a PAT for DarkRedOS
+   git remote set-url origin https://github.com/om-shegokar/portfolio.git
+   git push -u origin main        # needs gh auth login / a PAT for om-shegokar
    ```
 
 2. **Import to Vercel** (dashboard, ~1 min):
-   - vercel.com → **Add New → Project** → Import `DarkRedOS/portfolio`
+   - vercel.com → **Add New → Project** → Import `om-shegokar/portfolio`
    - Before deploying, rename the project: **Settings → General → Project Name**
      → `om-portfolio` (project name = your URL; `portfolio` is taken on Vercel)
    - **Deploy** — Next.js is auto-detected, zero config needed.

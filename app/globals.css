@@ -17,9 +17,12 @@
   --font-mono: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
+html {
+  scroll-padding-top: 6rem;
+}
+
 body {
   background-color: var(--color-term-bg);
-  background-image: radial-gradient(ellipse 90% 60% at 50% -10%, rgba(61, 220, 132, 0.07), transparent 70%);
   color: var(--color-term-fg);
   font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
 }
@@ -32,6 +35,18 @@ body {
 :focus-visible {
   outline: 2px solid var(--color-term-cyan);
   outline-offset: 2px;
+}
+
+/* The terminal uses its caret for focus, without an input-box outline.
+   Keep this outside Tailwind layers to override the global focus rule. */
+#terminal-command,
+#terminal-command:focus,
+#terminal-command:focus-visible {
+  border: 0;
+  border-radius: 0;
+  outline: none;
+  box-shadow: none;
+  background: transparent;
 }
 
 /* CRT scanline overlay — static, no motion */

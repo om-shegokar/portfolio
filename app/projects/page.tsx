@@ -12,7 +12,7 @@ export default function ProjectsPage() {
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
       <div className="mb-10">
         <h1 className="text-2xl font-semibold text-term-fg sm:text-3xl">
-          ~/projects<span className="cursor-blink text-term-green">_</span>
+          ~/projects
         </h1>
         <p className="mt-2 text-sm sm:text-base">
           <Prompt>ls -la ~/projects</Prompt>

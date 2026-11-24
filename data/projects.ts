@@ -1,73 +1,73 @@
 export interface Project {
   name: string;
+  featured?: boolean;
+  problem?: string;
+  architecture?: string;
+  result?: string;
   tagline: string;
   period?: string;
   bullets: string[];
   tags: string[];
   github?: string;
+  githubLabel?: string;
 }
 
 export const projects: Project[] = [
   {
-    name: "llm-eval-platform",
-    tagline: "Crash-recoverable benchmarking infrastructure",
-    period: "2024 – Present",
-    bullets: [
-      "Full platform: REST API + PostgreSQL (benchmarks, models, eval-run queue) + stateless worker nodes with row-locking, cloning benchmark repos and running evals in isolated Docker containers.",
-      "S3-backed log persistence with periodic sync enabling crash recovery and checkpoint-resume; live logs streamed to a dashboard UI proxied through the backend.",
-      "Spot-preemption resilient on GCP Batch with MMLU-style JSONL sharding, plus a local dry-run suite for fast iteration.",
-    ],
-    tags: ["Python", "GCP", "Docker", "PostgreSQL", "S3", "REST API"],
-    github: "https://github.com/DarkRedOS/Benchmark",
+    name: "Humble Human",
+    featured: true,
+    tagline: "An AI coding agent with retrieval-based long-term memory.",
+    problem: "Preserve useful context as coding conversations exceed the model's token budget.",
+    architecture: "Three-tier memory: token-budgeted context, SQLite FTS5 searchable summaries, and durable JSONL transcripts; retrieval through tool calls and a streaming FastAPI API.",
+    result: "A React coding workspace that can retrieve prior summaries and inspect persistent session transcripts.",
+    bullets: [],
+    tags: ["Python", "FastAPI", "SQLite FTS5", "React"],
+    github: "https://github.com/engram-node/humble-human",
   },
   {
-    name: "eval-dashboard",
-    tagline: "Unified benchmarking across SWE-Bench, Tau2-Bench & Polyglot",
-    period: "2025",
-    bullets: [
-      "4-microservice architecture: frontend, backend, DB, and an eval-runner VM.",
-      "Live log streaming from running evals; one pipeline spanning SWE-Bench, Tau2-Bench, Polyglot, and other suites.",
-      "Dynamic TPS/latency leaderboards (GLM-5, Minimax M2.5, Kimi K2.5) that directly informed production model-selection decisions.",
-    ],
-    tags: ["TypeScript", "React", "PostgreSQL", "Docker", "Microservices"],
-    github: "https://github.com/DarkRedOS/dashboard",
+    name: "LLM Evaluation Infrastructure — Xyne",
+    featured: true,
+    tagline: "Distributed benchmarking with checkpoint recovery.",
+    problem: "Run parallel LLM benchmarks with visibility into performance and recovery from interrupted jobs.",
+    architecture: "Python REST APIs, PostgreSQL job queues with row-level locking, and stateless Docker workers; S3-backed logs, live streaming, and checkpoint/resume.",
+    result: "Benchmarked GLM-4, Mistral, and QwQ using tokens/sec and latency to inform model selection and inference comparisons.",
+    bullets: ["Prototyped LoRA fine-tuning and FP8/BF16 quantization on GCP, assessing accuracy, latency, and inference-cost trade-offs."],
+    tags: ["Python", "PostgreSQL", "Docker", "GCP", "S3"],
+    github: "https://github.com/om-shegokar/Benchmark",
+    githubLabel: "Repository scaffold ↗",
   },
   {
-    name: "xyne-cli + xyne-code",
-    tagline: "TUI coding agent and VS Code extension, served by vLLM",
-    bullets: [
-      "Xyne-CLI: a TUI coding agent (in the spirit of OpenCode) with a /commands system, built as the underlying engine/library.",
-      "Xyne Code: a VS Code extension (in the spirit of Copilot) built on top of Xyne-CLI.",
-      "Both run on vLLM serving rented-GPU-hosted models (H200, B300) behind OpenAI-compatible endpoints.",
-    ],
-    tags: ["TypeScript", "Node.js", "vLLM", "LLM Agents", "Developer Tooling"],
+    name: "PalmCode",
+    featured: true,
+    tagline: "Foundations for an on-device Android coding-agent harness.",
+    problem: "Establish a reproducible foundation for an Android-native, bring-your-own-key LLM agent.",
+    architecture: "Rust core connected to Kotlin Android through UniFFI, with reproducible toolchain scaffolding.",
+    result: "Validated emulator FFI and build execution spikes using reproducible Android/Rust toolchains.",
+    bullets: [],
+    tags: ["Rust", "Kotlin", "UniFFI", "Android"],
+    github: "https://github.com/engram-node/palmcode",
   },
   {
-    name: "sign-signify",
-    tagline: "Real-time sign language translation on Android",
-    period: "Jun 2023 – May 2024",
+    name: "Coding Model Evaluation Dashboard",
+    tagline: "Interactive benchmark comparisons in Streamlit.",
     bullets: [
-      "CNN for palm detection + RNN for temporal gesture recognition, running as a real-time translation pipeline.",
-      "Model quantization for low-latency edge inference on-device.",
+      "Compares coding models across ARCHIT EVAL, HumanEval, SWE Benchmark, RustEvo, Aider-Polyglot, and Haskell LLM.",
+      "Uses pandas and Plotly for model comparisons, heatmaps, radar charts, and metrics including pass@k and API accuracy.",
     ],
-    tags: ["Android", "CNN", "RNN", "Model Quantization"],
-    github: "https://github.com/DarkRedOS/sign-signify",
+    tags: ["Python", "Streamlit", "pandas", "Plotly"],
+    github: "https://github.com/om-shegokar/dashboard",
   },
   {
-    name: "manas-app",
-    tagline: "Offline-first mental wellness app — 1K+ Play Store downloads",
-    bullets: [
-      "Offline-first Android architecture with custom conflict-resolution sync logic over SQLite.",
-      "Published to the Play Store; 1,000+ downloads.",
-    ],
-    tags: ["Android", "SQLite", "Offline-first Sync"],
+    name: "Real-Time Sign Language Recognition",
+    tagline: "An Android gesture-to-text prototype with on-device inference.",
+    bullets: ["CNN-based visual features and recurrent temporal modeling with TensorFlow Lite inference on Android."],
+    tags: ["TensorFlow Lite", "CNN", "RNN", "Android"],
+    github: "https://github.com/om-shegokar/sign-signify",
   },
   {
-    name: "latam-fintech-agent",
-    tagline: "Agent surfacing LATAM fintech news from internal repos",
-    bullets: [
-      "Built an agent that surfaces LATAM fintech news by pulling relevant context from Juspay's internal repositories.",
-    ],
-    tags: ["Python", "LLM", "Agentic", "RAG"],
+    name: "Manas",
+    tagline: "Offline-first Android app with 1K+ Google Play downloads.",
+    bullets: ["Developed during the Android Developer internship at Cyber Secured India, using SQLite and synchronization for offline-first operation."],
+    tags: ["Android", "SQLite", "Synchronization"],
   },
 ];
