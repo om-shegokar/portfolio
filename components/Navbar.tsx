@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { profile } from "@/data/profile";
-import { Cursor } from "./TerminalWindow";
 
 const LINKS = [
   { href: "/about", label: "about" },
@@ -25,7 +24,6 @@ export function Navbar() {
             {profile.user}@{profile.host}
           </span>
           <span className="text-term-dim">:~$</span>
-          <Cursor />
         </Link>
 
         <ul className="hidden items-center gap-6 sm:flex">

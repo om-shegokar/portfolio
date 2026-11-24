@@ -5,6 +5,7 @@ export interface ExperienceEntry {
   location?: string;
   period?: string;
   bullets: string[];
+  highlights?: string[];
 }
 
 export interface EducationEntry {
@@ -16,9 +17,10 @@ export interface EducationEntry {
   coursework?: string[];
 }
 
-// Keys/categories are rendered as syntax-highlighted skills.json on the About page
 export type Skills = Record<string, string[]>;
+export const juspay = { org: "Juspay", period: "Jan 2024 – Present" };
 
+// Career details transcribed from the supplied Om_Shegokar_Resume.pdf.
 export const resume: {
   experience: ExperienceEntry[];
   education: EducationEntry[];
@@ -31,99 +33,54 @@ export const resume: {
       org: "Juspay",
       team: "Xyne — AI/ML & Core Engineering",
       location: "Bengaluru",
-      period: "Jan 2024 – Present",
+      highlights: [
+        "Engineered distributed LLM evaluation with Python REST APIs, PostgreSQL job queues, row-level locking, and stateless Docker workers.",
+        "Benchmarked GLM-4, Mistral, and QwQ using throughput and latency metrics to inform model selection.",
+      ],
       bullets: [
-        "Prototyped LoRA fine-tuning and FP8/BF16 quantization pipelines to cut LLM inference cost on GCP, benchmarking the accuracy/latency trade-off at each compression level before production rollout.",
-        "Built TPS/latency leaderboards across SOTA models (GLM-5, Minimax M2.5, Kimi K2.5) that directly informed production model-selection decisions.",
-        "Architected a scalable evaluation platform: REST API + PostgreSQL job queue fronting stateless worker nodes with row-locking, cloning benchmark repos and running evals in isolated Docker containers — enabling parallel, crash-recoverable execution at scale.",
-        "Built a 4-microservice eval dashboard (frontend, backend, DB, eval-runner VM) with live log streaming and a unified benchmarking pipeline spanning SWE-Bench, Tau2-Bench, Polyglot, and other suites.",
-        "Implemented S3-backed log persistence with checkpoint-resume for crash recovery, and live log streaming to a dashboard proxied through the backend.",
-        "Built developer tooling — Xyne-CLI (a TUI coding agent) and Xyne Code (a VS Code extension) — powered by vLLM serving rented-GPU-hosted models (H200, B300) behind OpenAI-compatible endpoints.",
-        "Worked on inference optimization on H200 GPUs; wrote orchestration scripts to run multiple evals concurrently across tmux sessions and SSH'd VM/CPU machines.",
-        "Conducted senior/staff-level code review across five benchmark eval repos; open-source contributor to Hyperswitch and Xyne.",
+        "Engineered a distributed LLM evaluation platform with Python REST APIs, PostgreSQL job queues, row-level locking, and stateless Docker workers for parallel benchmark execution.",
+        "Benchmarked GLM-4, Mistral, and QwQ using tokens/sec and latency metrics, informing model selection and inference performance comparisons.",
+        "Prototyped LoRA fine-tuning and FP8/BF16 quantization on GCP; evaluated accuracy, latency, and inference-cost trade-offs.",
+        "Implemented S3-backed logs, live streaming, and checkpoint/resume mechanisms to improve visibility and recovery of evaluation jobs.",
       ],
     },
     {
       role: "Product Solution Engineer",
       org: "Juspay",
-      team: "Breeze — D2C Checkout Integrations",
+      team: "Breeze — Payments & Production Engineering",
       location: "Bengaluru",
-      period: "Aug 2024 – Present",
       bullets: [
-        "Managed end-to-end checkout integrations for 125+ D2C brands across Shopify, Magento, and WooCommerce — delivering up to 10% conversion improvement over native Shopify checkout.",
-        "Reduced incident resolution time by 35% via Kibana, distributed logging, and automated API-level debugging across production traffic.",
-        "Maintained a 95% payment success rate integrating third-party SDKs with dynamic multi-gateway routing in live, high-throughput environments.",
-        "Built an LLM tool-calling layer for Breeze Automatic (iOS/Android) letting merchants configure checkout via natural language, integrated across Shopify, WooCommerce, and Magento.",
+        "Supported checkout integration and production reliability for 125+ D2C brands; used SQL/log analysis and A/B experiments to assess checkout improvements.",
+        "Reduced incident resolution time by 35% using Kibana-based observability; supported payment integrations with >95% success rate.",
       ],
     },
     {
-      role: "Product Solution Engineer Intern",
-      org: "Juspay",
-      location: "Bengaluru",
-      period: "Jan 2024 – Aug 2024",
-      bullets: [
-        "Used Juspay's payment orchestration layer for dynamic multi-gateway routing — 95% technical success rate (excluding user drop-offs).",
-        "Built reusable integration configs and automated debug scripts, cutting core-engineering dependency by 30% and speeding merchant go-live.",
-        "Ran A/B experiments achieving a 2.5% conversion uplift across high-traffic merchants.",
-      ],
-    },
-    {
-      role: "Machine Learning Engineer Intern",
-      org: "iHub-AwaDH, IIT Ropar",
-      bullets: ["Image classification work and Blender-based data/asset pipelines."],
-    },
-    {
-      role: "Android App Developer Intern",
+      role: "Android Developer Intern",
       org: "Cyber Secured India",
       location: "Pune",
       period: "Feb 2023 – Mar 2023",
       bullets: [
-        "Built the Manas mental wellness app with offline-first architecture (SQLite + conflict-resolution sync); published to the Play Store with 1K+ downloads.",
+        "Developed the offline-first Manas Android app with SQLite and synchronization; published on Google Play with 1K+ downloads.",
       ],
     },
   ],
-  education: [
-    {
-      degree: "B.E. Computer Engineering",
-      school: "Indira College of Engineering & Management",
-      university: "Savitribai Phule Pune University",
-      period: "2020 – 2024",
-      gpa: "CGPA 8.11 / 10",
-      coursework: ["Data Structures & Algorithms", "Distributed Systems", "Artificial Intelligence", "Database Management Systems"],
-    },
-  ],
+  education: [{
+    degree: "B.E. Computer Engineering",
+    school: "Indira College of Engineering & Management",
+    university: "Pune University",
+    period: "2020 – 2024",
+    gpa: "CGPA 8.11 / 10",
+  }],
   skills: {
-    inference_optimization: [
-      "Model Quantization (FP8/BF16)",
-      "LoRA Fine-Tuning",
-      "TPS/Latency Benchmarking",
-      "HuggingFace Transformers",
-      "PyTorch",
-    ],
-    llm_serving: [
-      "vLLM",
-      "SGLang",
-      "Rented GPU Hosting (H200, B300)",
-      "OpenAI-compatible Endpoints",
-      "Continuous Batching",
-      "Paged Attention / Flash Attention",
-      "KV Cache Handling",
-    ],
-    ml_infrastructure: [
-      "Distributed Job Queues",
-      "REST API Design",
-      "PostgreSQL",
-      "S3-backed Log Persistence",
-      "Crash Recovery",
-      "GCP Batch",
-    ],
-    cloud_deployment: ["GCP", "Docker", "Kubernetes", "Microservices", "Linux/tmux", "GitHub Actions", "CI/CD"],
-    observability: ["Kibana", "Distributed Logging", "Incident Response", "A/B Testing"],
-    languages: ["Python", "Rust", "JavaScript", "SQL", "Bash"],
+    ml_deep_learning: ["Python", "NumPy", "pandas", "scikit-learn", "PyTorch", "TensorFlow", "TensorFlow Lite", "CNNs", "RNNs", "Model Evaluation"],
+    inference_optimization: ["Hugging Face Transformers", "LoRA Fine-Tuning", "FP8/BF16 Quantization", "LLM APIs", "Tool Calling", "Inference Benchmarking"],
+    backend_data_cloud: ["SQL", "PostgreSQL", "SQLite", "FastAPI", "REST APIs", "Docker", "GCP", "Distributed Job Queues", "S3", "Linux", "Git"],
+    production_experimentation: ["Throughput/Latency Analysis", "A/B Testing", "Kibana", "Logging", "Checkpoint Recovery", "CI/CD"],
+    languages: ["Python", "SQL", "Rust", "Kotlin"],
   },
   coverLetter: [
-    "I'm Om — an AI/ML engineer who makes LLM inference fast, cheap, and measurable in production. At Juspay's Xyne team I built the evaluation infrastructure that decides which models we ship: a crash-recoverable GCP + Docker platform with PostgreSQL job queues and S3-backed log persistence, TPS/latency leaderboards across SOTA models, and a unified dashboard spanning SWE-Bench, Tau2-Bench, and Polyglot.",
-    "Before Xyne, I shipped checkout for 125+ D2C brands on Juspay's Breeze team — cutting incident resolution time 35% and lifting conversion up to 10% over native Shopify checkout. That payments rooting means I build ML systems with product stakes in mind: latency budgets, cost per request, and the conversion metric at the end of the funnel.",
-    "I'm looking for a role where I can own LLM inference and evaluation systems end-to-end, in an early-stage, high-ambiguity environment. If that sounds like your team, my inbox is open.",
+    "I'm Om, a machine learning engineer focused on generative AI, model evaluation, and ML infrastructure. At Juspay's Xyne team, I engineered distributed LLM benchmarking with Python APIs, PostgreSQL job queues, Docker workers, and S3-backed logs and checkpoint recovery. I benchmarked GLM-4, Mistral, and QwQ and prototyped LoRA fine-tuning and FP8/BF16 quantization on GCP.",
+    "On the Breeze team, I supported checkout integration and production reliability for 125+ D2C brands, used SQL and log analysis and A/B experiments to assess improvements, and reduced incident resolution time by 35% through Kibana-based observability.",
+    "My independent projects include Humble Human, an AI coding agent with persistent three-tier memory; a TensorFlow Lite sign-language recognition prototype; and PalmCode's foundational Android/Rust integration. I'm interested in roles where I can build and evaluate useful AI systems.",
   ],
 };

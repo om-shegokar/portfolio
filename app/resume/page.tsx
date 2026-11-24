@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { profile } from "@/data/profile";
 import { resume } from "@/data/resume";
 import { Prompt, TerminalWindow } from "@/components/TerminalWindow";
+import { ExperienceTimeline } from "@/components/ExperienceTimeline";
 import { Reveal } from "@/components/Reveal";
 
 export const metadata: Metadata = {
@@ -13,7 +14,7 @@ export default function ResumePage() {
     <div className="mx-auto max-w-4xl px-4 py-10 sm:px-6 sm:py-14">
       <div className="mb-10">
         <h1 className="text-2xl font-semibold text-term-fg sm:text-3xl">
-          ~/resume<span className="cursor-blink text-term-green">_</span>
+          ~/resume
         </h1>
         <p className="mt-2 text-sm sm:text-base">
           <Prompt>wget /resume.pdf</Prompt>
@@ -23,6 +24,7 @@ export default function ResumePage() {
         </p>
         <a
           href="/resume.pdf"
+          download="Om-Shegokar-Resume.pdf"
           className="mt-4 inline-flex items-center gap-2 rounded border border-term-green/50 px-4 py-2 text-sm text-term-green transition-colors hover:bg-term-green/10"
         >
           download resume.pdf ↓
@@ -34,37 +36,7 @@ export default function ResumePage() {
           <h2 className="mb-4 text-lg text-term-fg">
             <span className="text-term-green">$</span> experience
           </h2>
-          <div className="space-y-6">
-            {resume.experience.map((job, index) => (
-              <Reveal key={`${job.org}-${job.role}-${index}`}>
-                <article className="rounded-xl border border-term-border bg-term-surface p-5">
-                  {job.period ? <p className="text-xs text-term-dim">{job.period}</p> : null}
-                  <h3 className="mt-1 text-base text-term-fg">
-                    {job.role} <span className="text-term-dim">@</span>{" "}
-                    <span className="text-term-green">{job.org}</span>
-                  </h3>
-                  {job.team || job.location ? (
-                    <p className="mt-0.5 text-xs text-term-dim">
-                      {[job.team, job.location].filter(Boolean).join(" · ")}
-                    </p>
-                  ) : null}
-                  <ul className="mt-3 space-y-2">
-                    {job.bullets.map((bullet, bulletIndex) => (
-                      <li
-                        key={bulletIndex}
-                        className="flex gap-2 text-sm leading-6 text-term-fg/85"
-                      >
-                        <span aria-hidden="true" className="shrink-0 text-term-green">
-                          ▹
-                        </span>
-                        <span>{bullet}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </article>
-              </Reveal>
-            ))}
-          </div>
+          <ExperienceTimeline />
         </section>
 
         <section aria-label="education">
